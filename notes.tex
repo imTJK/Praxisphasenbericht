@@ -1,0 +1,77 @@
+
+\section {Notizen zur Arbeit}
+
+Hier kommen die Notizen zur Arbeit an den jeweiligen Tagen hinein.
+
+Angefangen hat das ganze am 07.07.2025.
+
+\paragraph{07.07} 
+TMC5160-Treiber (weiter-) geschrieben.
+\begin{description}
+    \item Rampenprofil-Kalkulationen vervollständigt (Grafik einbinden)
+    \item Error-Handling ermöglicht aber nicht integriert
+    \item Unterschiede zwischen skalierten uint64\_t und standard float-Präzision untersucht
+    \begin{itemize}
+        \item Vergleich sf\_stepper.cpp vs sf\_stepper\_u64.cpp
+        \item Grafik einbinden
+        \item Messungen bei verschiedenen Geschwindigkeiten
+    \end{itemize}
+    \item C-Wrapper Funktionen angepasst
+\end{description}
+
+
+\paragraph{09.07}
+TMC5160-Treiber "vervollständigt".
+\begin{description}
+    \item IRQ-Callback für das Modul eingefügt
+    \SubItem {SF\_Stepper\_ModulIRQ\_Callback}
+    \item SPI-Task Interrupt Callback eingefügt
+    \SubItem {SF\_Stepper\_DI\_Int\_Callback}
+    \item ISR-sichere Queue funktionen in den SPI-Task eingefügt
+    \SubItem {SPI\_Task\_Send\_Request\_fromISR \& SPI\_Task\_QueueRequest\_fromISR}
+    \item Fernseher- und "Hologram"-Fan-Stand für Messen aufgebaut, überprüft und repariert.
+    \SubItem {Bild einfügen}
+    \item Fernseher in Neotel-Büro aufgebaut
+\end{description}
+
+\paragraph{22.07 - 29.07}
+Vorige Woche komplett krank
+\begin{description}
+    \item Command Interpreter für den W5500 integriert\\
+    Simples unifizieren, parsen und auswerten
+    \SubItem{W5500::parseAndExecuteCommand}
+    \SubItem{W5500::processIncomingMessage}
+    \SubItem{W5500::sendResponse}
+    \SubItem{W5500::handleCommand}
+    \item TMC5160 Stepper-Driver debugging
+    \SubItem{calculateRampParameters updated}
+    \SubItem{Calculation spreadsheet updated}
+    \SubItem{handleEvent updated}
+\end{description}
+
+\paragraph{03.08 - 08.08}
+\begin{description}
+    \item SF-Stepper Modul "beendet"
+    \item Raspberry Pi Pico + TinyUSB \& Pico Pio USB basierten Maussensor-Parser geschrieben zum testen vom LV
+    \SubItem {Simple DPI-Kalibrierung}
+    \SubItem {Session-basiertes Messverfahren}
+    \SubItem {Bild einfügen, mögliches Schaltbild vom Pico}
+    \item Halterung + LV-Integration für die Maus konstruiert und 3D-gedruckt
+    \SubItem Bild einfügen (Konstruktion + weitere Designs)
+\end{description}
+
+\paragraph{08.08-24.11}
+Hauptprojekt (Ethernet-Driver Integration und Compatibility-Layer) beendet
+\begin{description}
+    \item Wechsel von .cpp zu nativer .c Implementation
+    \item Vollständige integration in vorhandene Firmware
+    \SubItem {Registrierung der Pins des Addon-Boards}
+    \SubItem {Registrierung des Drivers in dem Bus-Device Handler}
+    \SubItem {Schreiben von Compatibility-Layer für CI und weitere Module}
+    \item Entwicklung weiterer funktionalität (nach Plan) im iterativen Entwicklungsprozess
+    \SubItem {Statisch allokierte Read-/Write-Buffer Pools um dynamische Partitionierung während der Runtime ohne Speichermanipulation zu ermöglichen}
+    \SubItem {Status, ethernet\_interface und socket Handle-Strukturen}
+    \SubItem {SPI-reliant funktionen in jeweiligen SPI-Task übergeben}
+    \SubItem {async read-write-funktionen für alle SPI-Devices geschriben mit kontext-basierten freeRTOS-Calls / Context-Switching}
+    
+\end{description}

@@ -1,0 +1,99 @@
+%%
+%% Berliner Hochschule für Technik -- Praxisphasenbericht
+%%
+%% Hauptdokument
+%%
+%% Strukturiert nach wissenschaftlichem Bachelor-Arbeit Format
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt, a4paper, oneside]{book}
+
+%% Übersetzen für die Abgabe
+\usepackage[abgabe]{resources/bht-standard/bhtThesis}
+\typeout{BHT-Abschlussarbeit V2.0 26.08.21 S.Tschirley}
+
+\usepackage{listings}
+\lstset{ 
+  literate={ö}{{\"o}}1
+           {ä}{{\"a}}1
+           {ü}{{\"u}}1
+           {Ö}{{\"O}}1
+           {Ä}{{\"A}}1
+           {Ü}{{\"U}}1
+           {ß}{{\ss}}1
+}
+
+\usepackage{siunitx}
+\usepackage{bytefield}
+\usepackage{hyperref}
+
+%%
+%% Pfad zu den Bildern
+%%
+\graphicspath{
+  {pictures/},
+  {graphics/}
+}
+
+%%
+%% Einbinden persönlicher macros 
+%%
+\input{resources/src/personalMacros}
+
+%% Message
+\typeout{-----------------------------------------------------------}
+\typeout{----> main.tex ---- Zentrales Dokument---------------------}
+\typeout{-----------------------------------------------------------}
+
+\version{1.0}
+\datum{\today}
+
+%%
+%% Titel, Autor und Betreuer
+%%
+\fachbereich{VII -- Elektrotechnik -- Mechatronik -- Optometrie} 
+\studiengang{Humanoide Robotik}
+\autor{Tjorven Koopmann}
+\edvnr{937274}
+\titel{Embedded Systems Entwicklung in der industriellen Automatisierungstechnik}
+\untertitel{Praxisphasenbericht über die Firmware-Entwicklung bei der ATN Automatisierungstechnik Niemeier GmbH}
+\betreuerFeld{
+  \begin{tabular}{lr}
+    \multicolumn{2}{l}{\textbf{Gutachter}}\\
+    Prof.~Dr.~Manfred Hild & Berliner Hochschule für Technik\\
+    Andreas Senoner & ATN Automatisierungstechnik Niemeier\\
+    Dipl.-Ing. Jörg Niemeier & ATN Automatisierungstechnik Niemeier
+  \end{tabular}
+}
+
+\begin{document}
+\pagestyle{fancy}
+
+\input{resources/bht-standard/titelseiten}
+
+\pagenumbering{arabic}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Die Kapitel der Arbeit -- Wissenschaftliche Struktur
+\newpage
+\input{chapters/1_einleitung/main}           % Kapitel 1: Einleitung
+\input{chapters/2_grundlagen/main}           % Kapitel 2: Theoretische Grundlagen
+\input{chapters/3_methodik/main}             % Kapitel 3: Methodik und Arbeitsumgebung
+\input{chapters/4_implementierung/main}      % Kapitel 4: Implementierung
+\input{chapters/5_ergebnisse/main}           % Kapitel 5: Ergebnisse und Evaluation
+\input{chapters/6_diskussion/main}           % Kapitel 6: Diskussion und Ausblick
+
+%%
+%% Anhang
+\begin{appendix}
+  \input{resources/bht-standard/anhang}
+\end{appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Literaturverzeichnis
+
+\clearpage\newpage
+\addcontentsline{toc}{chapter}{Literatur- und Quellenverzeichnis}
+\bibliographystyle{resources/bht-standard/myapalike.bst}
+\bibliography{resources/bht-standard/bhtThesis}
+
+\end{document}

@@ -1,0 +1,21 @@
+%%
+%% Berliner Hochschule für Technik -- Praxisphasenbericht
+%%
+%% Kurzfassung
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter*{Kurzfassung}
+\addcontentsline{toc}{chapter}{Kurzfassung}
+
+Dieser Bericht dokumentiert die Praxisphase im Zeitraum vom 07.07.2025 bis 30.11.2025 bei der Automatisierungstechnik Niemeier GmbH (ATN) in Berlin, einem Unternehmen im Bereich Automatisierungstechnik für die Elektronikfertigung. Der Schwerpunkt der Tätigkeit lag auf der Firmware-Entwicklung für Steuerungssysteme von Löt- und Dosierautomaten.
+
+Die Arbeit folgt einer wissenschaftlichen Struktur und gliedert sich in sechs Kapitel: Nach einer Einleitung mit Problemstellung und Zielsetzung werden die theoretischen Grundlagen der Embedded-Systems-Entwicklung dargelegt. Das Methodenkapitel beschreibt die Arbeitsumgebung und angewandten Entwicklungsprozesse. Die Implementierung dokumentiert die technische Umsetzung der drei Hauptprojekte, deren Ergebnisse anschließend evaluiert werden. Das abschließende Kapitel diskutiert die Erkenntnisse und gibt einen Ausblick.
+
+Die Praxisphase umfasste drei zentrale Tätigkeitsbereiche: Die Entwicklung eines Treibers für den TMC5160 Stepper-Motor-Controller mit präzisen Rampenprofil-Kalkulationen, die Erstellung eines Hardware-Test-Setups mittels Raspberry Pi Pico für Sensorkalibrierung, sowie das Hauptprojekt -- die vollständige Integration eines W5500 Ethernet-Controllers in die produktive Firmware.
+
+Das Hauptprojekt erstreckte sich über 3,5 Monate und beinhaltete die Migration von einer C++-basierten Testimplementierung zu einer nativen C-Implementierung, die Entwicklung eines Compatibility-Layers für bestehende Module sowie die Implementierung fortgeschrittener Konzepte wie statisch allokierte Buffer-Pools und asynchrone SPI-Kommunikation mit freeRTOS-Context-Switching.
+
+Zentrale Herausforderungen waren die Vermeidung von Race-Conditions in Multi-Threading-Umgebungen und die Integration neuer Komponenten in Legacy-Code ohne Beeinträchtigung bestehender Funktionalität. Die iterative Entwicklungsmethodik mit regelmäßigen Code-Reviews erwies sich als besonders geeignet für die Komplexität der Embedded-Entwicklung.
+
+Die Praxisphase ermöglichte den Erwerb tiefgehender praktischer Kenntnisse in RTOS-Programmierung, Hardware-naher Software-Entwicklung und professionellem Projektmanagement. Die Kombination aus theoretischem Studium und praktischer Anwendung bestätigte das Interesse an Embedded Systems und legte eine solide Grundlage für die weitere berufliche Entwicklung in diesem Bereich.

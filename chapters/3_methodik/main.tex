@@ -1,0 +1,189 @@
+\chapter{Methodik und Arbeitsumgebung}
+\label{chap:methodik}
+
+Dieses Kapitel beschreibt die Arbeitsumgebung, in der die Praxisphase durchgeführt wurde, sowie die angewandten Methoden und Prozesse. Eine fundierte Darstellung dieser Rahmenbedingungen ist für die Einordnung der technischen Ergebnisse unerlässlich.
+
+\section{Vorstellung des Praktikumsbetriebs}
+\label{sec:praktikumsbetrieb}
+
+\subsection{Unternehmensprofil}
+
+% TODO: Foto des Firmengebäudes oder Arbeitsplatzes einfügen?
+
+Die Automatisierungstechnik Niemeier GmbH (ATN) mit Standort in Berlin-Treptow-Köpenick entwickelt, produziert und vertreibt Komponenten, Systeme und Software für die Elektronikfertigung. Die Kernkompetenzen umfassen Löttechnik, Lötroboter, Dosiertechnik und Maschinen für die SMT-Fertigung.
+
+Das Unternehmen wurde 1996 als Ausgründung aus dem Produktionstechnischen Zentrum Berlin (PTZ) der TU Berlin gegründet und beschäftigt aktuell etwa 40 Mitarbeiter. Die universitären Wurzeln spiegeln sich in der engen Kooperation mit Hochschulen und Forschungsinstituten wider.
+
+\subsection{Marktposition und Produkte}
+
+% TODO: Produktfotos einfügen (LightBeam-System, VARIO-Plattform, Lötsystem)?
+
+ATN hat sich in mehreren Marktsegmenten als Spezialist positioniert:
+
+\nlparagraph{Selektives Lichtlöten}
+Mit dem LightBeam-System hat sich ATN als Marktführer für selektives Lichtlöten in der Elektronikfertigung etabliert. Das modulare Lötsystem VARIO bietet eine flexible Plattform für verschiedene Löttechnologien.
+
+\nlparagraph{Solarmodulfertigung}
+Mit über 300 weltweit installierten Induktionslötsystemen gehört ATN zu den Marktführern für das automatisierte Löten der Randverschaltung von Solarmodulen.
+
+\nlparagraph{Dosiertechnik}
+Als autorisierter Vertriebs- und Service-Partner von Musashi Engineering bedient ATN Kunden in der optoelektronischen Industrie und Medizintechnik.
+
+\subsection{Organisationsstruktur}
+
+% TODO: Organigramm oder vereinfachte Darstellung der Unternehmensstruktur?
+
+Die Organisationsstruktur von ATN umfasst folgende Bereiche:
+\begin{itemize}
+    \item Applikation Löten
+    \item Konstruktion
+    \item Steuerungsentwicklung und -bau
+    \item Programmierung
+    \item Vertrieb und Service
+\end{itemize}
+
+Die Praxisphase wurde im Bereich Steuerungsentwicklung und Programmierung durchgeführt, konkret im Elektronik-Labor.
+
+\section{Arbeitsumgebung und Ressourcen}
+\label{sec:arbeitsumgebung}
+
+\subsection{Technische Infrastruktur}
+
+Für die Firmware-Entwicklung standen professionelle Entwicklungswerkzeuge zur Verfügung:
+
+\nlparagraph{Entwicklungsumgebung}
+\begin{itemize}
+    \item IDE für Embedded-Entwicklung (proprietäre Toolchain)
+    \item Versionskontrolle (Git)
+    \item Debugging-Tools (JTAG/SWD-Debugger)
+    \item Logic-Analyzer für Signalanalyse
+\end{itemize}
+
+\nlparagraph{Hardware}
+\begin{itemize}
+    \item TMC5160 Stepper-Motor-Controller (Evaluationsboards und Eigenentwicklung)
+    \item W5500 Ethernet-Controller (Evaluationsmodul und Addon-Board)
+    \item Raspberry Pi Pico für Prototyping
+    \item 3D-Drucker für mechanisches Prototyping
+\end{itemize}
+
+\subsection{Firmware-Architektur (ATNC3)}
+
+Die interne ATN-Control-3-Firmware (ATNC3) stellt die Basis für alle Steuerungssysteme dar. Die Architektur basiert auf freeRTOS und implementiert:
+
+\begin{itemize}
+    \item Modulares Task-System mit definierten Schnittstellen
+    \item Bus-Device-Handler für Hardware-Abstraktion
+    \item SPI-Task-Struktur mit Queue-basierter Kommunikation
+    \item Integrierte User-Interface-Komponenten
+\end{itemize}
+
+Die Integration neuer Komponenten erfordert die Einhaltung dieser Architekturvorgaben.
+
+\section{Betreuung und Zusammenarbeit}
+\label{sec:betreuung}
+
+\subsection{Fachliche Ansprechpartner}
+
+Die direkte fachliche Betreuung erfolgte durch:
+\begin{itemize}
+    \item \textbf{Thomas Wolf:} Erfahrener Firmware-Entwickler, Hauptansprechpartner für Architektur und Code-Reviews
+    \item \textbf{Pascal Rosin:} Firmware-Entwickler, Unterstützung bei freeRTOS-spezifischen Themen
+\end{itemize}
+
+\subsection{Arbeitsorganisation}
+
+Die Arbeitsorganisation folgte einem strukturierten Prozess:
+\begin{itemize}
+    \item Wöchentliche Abstimmungen zu Projektfortschritt und Priorisierung
+    \item Regelmäßige Code-Reviews vor Integration in die Hauptcodebasis
+    \item Dokumentation von Entscheidungen und technischen Lösungen
+    \item Eigenverantwortliche Zeiteinteilung bei definierten Meilensteinen
+\end{itemize}
+
+\section{Angewandte Methoden}
+\label{sec:methoden}
+
+\subsection{Entwicklungsprozess}
+
+Der Entwicklungsprozess orientierte sich an iterativen Methoden:
+
+\nlparagraph{Iterative Entwicklung}
+Komplexe Funktionalitäten wurden in Iterationen entwickelt:
+\begin{enumerate}
+    \item Analyse und Konzeption
+    \item Implementierung eines funktionalen Prototyps
+    \item Integration und Testing
+    \item Review und Refactoring
+    \item Dokumentation
+\end{enumerate}
+
+\nlparagraph{Code-Reviews}
+Code-Reviews waren integraler Bestandteil des Entwicklungsprozesses. Sie dienten:
+\begin{itemize}
+    \item Der Qualitätssicherung
+    \item Dem Wissenstransfer
+    \item Der Einhaltung von Coding-Standards
+    \item Der frühzeitigen Identifikation von Architekturproblemen
+\end{itemize}
+
+\subsection{Testing-Strategien}
+
+\nlparagraph{Hardware-in-the-Loop}
+Aufgrund der Hardware-Abhängigkeit der Firmware erfolgte das Testing primär auf echter Hardware. Systematisches Logging ermöglichte die Nachverfolgung von Problemen.
+
+\nlparagraph{Stress-Testing}
+Kritische Komponenten wurden unter erhöhter Last getestet, um Race-Conditions und Timing-Probleme zu identifizieren.
+
+\subsection{Dokumentation}
+
+Die Dokumentation umfasste:
+\begin{itemize}
+    \item Code-Kommentare gemäß internem Standard
+    \item Technische Dokumentation von Schnittstellen
+    \item Commit-Messages mit Beschreibung der Änderungen
+    \item Notizen zu Design-Entscheidungen
+\end{itemize}
+
+\section{Mitgebrachte Qualifikationen}
+\label{sec:qualifikationen}
+
+Folgende Vorkenntnisse waren für die Praxisphase relevant:
+
+\nlparagraph{Programmierkenntnisse}
+\begin{itemize}
+    \item Kenntnisse in C und C++
+    \item Verständnis von Pointern und Speicherverwaltung
+    \item Erfahrung mit Versionskontrolle (Git)
+    \item Debugging-Grundlagen
+\end{itemize}
+
+\nlparagraph{Embedded Systems}
+\begin{itemize}
+    \item Grundwissen über Mikrocontroller-Architekturen
+    \item Theoretische Kenntnisse in RTOS-Konzepten
+    \item Verständnis für Hardware-Software-Schnittstellen
+\end{itemize}
+
+\nlparagraph{CAD und Prototyping}
+\begin{itemize}
+    \item Erfahrung mit SolidWorks
+    \item Grundkenntnisse im 3D-Druck
+\end{itemize}
+
+Diese Vorkenntnisse bildeten eine solide Basis, auch wenn viele Aspekte der professionellen Embedded-Entwicklung während der Praxisphase neu erlernt werden mussten.
+
+\section{Projektübersicht}
+\label{sec:projektuebersicht}
+
+Die Praxisphase umfasste drei Hauptprojekte, die in Kapitel~\ref{chap:implementierung} detailliert beschrieben werden:
+
+\begin{enumerate}
+    \item \textbf{TMC5160 Stepper-Motor-Driver} (ca. 4 Wochen): Implementierung der Rampenprofil-Kalkulationen für einen Lötvorschub-Modul
+    
+    \item \textbf{Hardware-Testing-System} (ca. 1 Woche): Entwicklung eines USB-Host-Systems zur Sensorkalibrierung
+    
+    \item \textbf{W5500 Ethernet-Integration} (ca. 14 Wochen): Vollständige Integration eines Ethernet-Controllers in die produktive Firmware
+\end{enumerate}
+
+Die Projekte waren aufeinander aufbauend konzipiert: Die Erfahrungen aus den ersten beiden Projekten -- insbesondere im Umgang mit der ATNC3-Firmware und freeRTOS -- bildeten die Grundlage für das umfangreiche Hauptprojekt.

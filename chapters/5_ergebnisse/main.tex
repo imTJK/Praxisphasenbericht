@@ -1,0 +1,181 @@
+\chapter{Ergebnisse und Evaluation}
+\label{chap:ergebnisse}
+
+Dieses Kapitel präsentiert die erzielten Ergebnisse der drei Hauptprojekte und evaluiert deren Qualität anhand definierter Kriterien. Die Bewertung erfolgt sowohl quantitativ als auch qualitativ.
+
+\section{TMC5160 Stepper-Motor-Driver}
+\label{sec:ergebnisse_tmc}
+
+\subsection{Erreichte Ziele}
+
+Die Implementierung der Rampenprofil-Berechnungen wurde erfolgreich abgeschlossen:
+
+\begin{itemize}
+    \item \textbf{Funktionale Vollständigkeit:} Alle spezifizierten Berechnungen wurden implementiert
+    \item \textbf{Validierung:} Eingabevalidierung und Konsistenzprüfung funktionieren zuverlässig
+    \item \textbf{Integration:} Nahtlose Einbindung in die ATNC3-Firmware
+    \item \textbf{Genauigkeit:} Zeitliche Abweichung <3ms, räumliche Abweichung <1 Fullstep
+\end{itemize}
+
+\subsection{Qualitative Bewertung}
+
+Die mathematische Modellierung erwies sich als robust und präzise. Die iterative Entwicklung mit regelmäßigen Code-Reviews führte zu einer wartbaren Code-Struktur. Die defensive Programmierung mit expliziter Fehlerbehandlung erhöht die Zuverlässigkeit im Produktiveinsatz.
+
+\section{Hardware-Testing-System}
+\label{sec:ergebnisse_hardware}
+
+\subsection{Erreichte Ziele}
+
+Das Projekt zur Verifikation der TMC5160-Rampenprofile lieferte gemischte Ergebnisse:
+
+\nlparagraph{Erfolgreiche Aspekte}
+\begin{itemize}
+    \item USB-Host-Implementierung auf dem RP2040 funktioniert zuverlässig
+    \item TinyUSB-Integration und PIO USB wurden erfolgreich umgesetzt
+    \item Mechanische Integration mittels 3D-Druck war praktikabel
+    \item Projektdauer von 6 Tagen wurde eingehalten
+\end{itemize}
+
+\nlparagraph{Limitierungen}
+\begin{itemize}
+    \item Messgenauigkeit für die Verifikation der Rampenprofile nicht ausreichend (>5\% Fehler)
+    \item Sporadischer Tracking-Verlust bei inhomogenen Oberflächen
+    \item Fehlende Reproduzierbarkeit zwischen Sessions
+    \item Testergebnisse für TMC5160-Validierung unzuverlässig
+\end{itemize}
+
+\subsection{Bewertung}
+
+Der Prototyp demonstrierte die technische Machbarkeit des USB-Host-Konzepts, erwies sich jedoch als ungeeignet für die Verifikation der Lötvorschub-Bewegungen. Die ungenauen Messergebnisse verhinderten eine belastbare Aussage über die Korrektheit der TMC5160-Rampenprofil-Implementierung.
+
+Das Projekt erfüllte dennoch seinen Zweck als Rapid-Prototyping-Ansatz, da die technischen Grenzen des gewählten Sensorprinzips frühzeitig identifiziert wurden und alternative Messverfahren für zukünftige Tests evaluiert werden konnten.
+
+\section{W5500 Ethernet-Driver Integration}
+\label{sec:ergebnisse_w5500}
+
+\subsection{Erreichte Ziele}
+
+Das Hauptprojekt wurde erfolgreich mit folgenden Ergebnissen abgeschlossen:
+
+\nlparagraph{Funktionale Ergebnisse}
+\begin{itemize}
+    \item Vollständig funktionsfähiger W5500 Ethernet-Driver in nativer C-Implementierung
+    \item Nahtlose Integration in die ATNC3-Firmware-Architektur
+    \item Ethernet-Interface ermöglicht anderen Modulen die Nutzung der Netzwerkfunktionalität
+    \item Statisches Buffer-Management-System für deterministische Speicherverwaltung
+    \item Asynchrone SPI-Kommunikation mit freeRTOS-Context-Switching
+\end{itemize}
+
+\nlparagraph{Qualitätsmerkmale}
+\begin{itemize}
+    \item Produktionsreife Code-Qualität nach mehreren Code-Review-Zyklen
+    \item Dokumentierte Schnittstellen für zukünftige Erweiterungen
+    \item Kompatibilität mit bestehenden und zukünftigen Modulen
+\end{itemize}
+
+\subsection{Quantitative Bewertung}
+
+% TODO: Weitere messbare Metriken ergänzen? (z.B. Lines of Code, Durchsatz, Latenz)
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{l|c|c}
+        Metrik & Ziel & Erreicht \\
+        \hline
+        Projektdauer & 14 Wochen & 15 Wochen \\
+        Code-Reviews bestanden & -- & 4 Zyklen \\
+        Buffer-Allokation & O(1) & O(1) \\
+        Speicherfragmentierung & 0\% & 0\% \\
+        Integration in Firmware & vollständig & vollständig \\
+    \end{tabular}
+    \caption{Quantitative Projektbewertung W5500}
+    \label{tab:w5500_metrics}
+\end{table}
+
+\subsection{Qualitative Bewertung}
+
+\nlparagraph{Innovative Aspekte}
+Das statische Buffer-Pool-System stellt eine elegante Lösung für ein klassisches Embedded-Problem dar. Die Kombination aus Compile-Zeit-Allokation und Runtime-Verwaltung ermöglicht sowohl Flexibilität als auch Determinismus.
+
+Die asynchrone SPI-Architektur demonstriert modernes Embedded-Design: Statt blockierender Calls werden die RTOS-Mechanismen optimal genutzt, was zu besserer Responsiveness führt.
+
+\nlparagraph{Herausforderungen}
+Die größten Herausforderungen waren:
+\begin{itemize}
+    \item Race-Conditions in Multi-Task-Umgebung
+    \item Integration in Legacy-Code bei gleichzeitiger Wahrung der Kompatibilität
+    \item Debugging asynchroner Systeme
+\end{itemize}
+
+\section{Gesamtbewertung der Praxisphase}
+\label{sec:gesamtbewertung}
+
+\subsection{Erfüllung der Zielsetzung}
+
+Die in Kapitel~\ref{sec:zielsetzung} definierten Ziele wurden wie folgt erfüllt:
+
+\begin{enumerate}
+    \item \textbf{TMC5160 Stepper-Motor-Driver:} Vollständig erreicht. Die Rampenprofil-Kalkulationen sind produktionsreif implementiert.
+    
+    \item \textbf{Hardware-Testing:} Teilweise erreicht. Die technische Implementierung war erfolgreich, die Anwendung für den spezifischen Use-Case jedoch nicht geeignet.
+    
+    \item \textbf{W5500 Ethernet-Integration:} Vollständig erreicht. Der Driver ist produktionsreif in die Firmware integriert.
+\end{enumerate}
+
+\subsection{Kompetenzentwicklung}
+
+\nlparagraph{Neu erworbene technische Kompetenzen}
+\begin{itemize}
+    \item Tiefes Verständnis für freeRTOS und Context-Switching
+    \item Praktische Erfahrung mit Buffer-Management in Embedded Systems
+    \item Architektur-Design für asynchrone Systeme
+    \item Professionelle Code-Organisation in großen Projekten
+    \item Debugging-Methoden für Multi-Threading-Umgebungen
+\end{itemize}
+
+\nlparagraph{Methodische Kompetenzen}
+\begin{itemize}
+    \item Iterative Entwicklung in Embedded-Projekten
+    \item Code-Review-Prozesse in professionellen Umgebungen
+    \item Systematisches Testing und Debugging
+    \item Dokumentation während der Entwicklung
+\end{itemize}
+
+\section{Bewertung der Praxisstelle}
+\label{sec:bewertung_praxisstelle}
+
+\subsection{Positive Aspekte}
+
+Die Praxisstelle zeichnete sich durch folgende Stärken aus:
+
+\begin{itemize}
+    \item \textbf{Eigenverantwortung:} Hoher Grad an selbstständiger Arbeit
+    \item \textbf{Relevante Projekte:} Arbeit an produktiven Systemen mit realem Impact
+    \item \textbf{Betreuung:} Konstruktives Feedback durch erfahrene Entwickler
+    \item \textbf{Arbeitsklima:} Offene, kollegiale Atmosphäre
+    \item \textbf{Technische Ausstattung:} Professionelle Entwicklungsumgebung
+\end{itemize}
+
+\subsection{Verbesserungspotenzial}
+
+Identifizierte Verbesserungsmöglichkeiten:
+
+\begin{itemize}
+    \item Strukturiertere initiale Einarbeitung wäre hilfreich gewesen
+    \item Klarere Anforderungsdefinition zu Projektbeginn hätte Iterationen reduziert
+    \item Mehr Dokumentation im bestehenden Code würde Einarbeitung beschleunigen
+\end{itemize}
+
+Diese Punkte sind als konstruktive Anregungen zu verstehen und schmälern nicht den insgesamt sehr positiven Eindruck.
+
+\subsection{Eignung für Studierende}
+
+Die Praxisstelle ist besonders geeignet für Studierende mit:
+\begin{itemize}
+    \item Starkem Interesse an Embedded Systems
+    \item Soliden Grundkenntnissen in C-Programmierung
+    \item Affinität zu Hardware-naher Programmierung
+    \item Bereitschaft zu selbstständigem Arbeiten
+\end{itemize}
+
+Die Praxisphase kann uneingeschränkt empfohlen werden für Studierende, die praktische Erfahrung in professioneller Embedded-Entwicklung sammeln möchten.

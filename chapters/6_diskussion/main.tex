@@ -1,0 +1,103 @@
+\chapter{Diskussion und Ausblick}
+\label{chap:diskussion}
+
+Dieses abschließende Kapitel diskutiert die gewonnenen Erkenntnisse und gibt einen Ausblick auf zukünftige Entwicklungen.
+
+\section{Reflexion der Praxisphase}
+\label{sec:reflexion}
+
+\subsection{Erwartungen versus Realität}
+
+Die Komplexität der Projekte übertraf die initialen Erwartungen deutlich. Besonders der Zeitaufwand für Debugging und die Anzahl notwendiger Iterationen waren höher als gedacht. Gleichzeitig war die Lernkurve steiler und der Erkenntnisgewinn größer als erwartet.
+
+Überraschend war die Bedeutung von Code-Organisation und Modularität: In einem System mit vielen asynchronen Komponenten ist klare Strukturierung essentiell für Wartbarkeit. Die krankheitsbedingte Unterbrechung zeigte deutlich den Wert guter Dokumentation -- bei der Wiederaufnahme der Arbeit war die vorhandene Dokumentation entscheidend für den schnellen Wiedereinstieg.
+
+\subsection{Gewonnene Erkenntnisse}
+
+\nlparagraph{Technische Erkenntnisse}
+\begin{itemize}
+    \item Praktische Erfahrung ist durch Theorie allein nicht zu ersetzen
+    \item Debugging-Skills sind mindestens so wichtig wie Entwicklungs-Skills
+    \item Code-Qualität und Wartbarkeit sind in professionellen Projekten essentiell
+    \item Integration in bestehende Systeme ist oft schwieriger als Neuentwicklung
+\end{itemize}
+
+\nlparagraph{Methodische Erkenntnisse}
+\begin{itemize}
+    \item Iterative Entwicklung ist für komplexe Embedded-Projekte notwendig
+    \item Code-Reviews sind essentiell für Qualitätssicherung
+    \item Dokumentation während der Entwicklung spart Zeit
+    \item Systematisches Vorgehen ist wichtiger als schnelle Lösungen
+\end{itemize}
+
+\section{Limitierungen und Verbesserungspotenzial}
+\label{sec:limitierungen}
+
+\subsection{Limitierungen der Arbeit}
+
+Diese Arbeit unterliegt folgenden Limitierungen:
+
+\begin{itemize}
+    \item Die krankheitsbedingte Unterbrechung (15.09.--01.11.) reduzierte die effektive Arbeitszeit
+    \item Einige Architekturentscheidungen waren durch die bestehende Firmware vorgegeben
+    \item Die Evaluierung erfolgte primär qualitativ; systematische Benchmarks fehlen
+    \item Das Hardware-Testing-System lieferte keine belastbaren Ergebnisse für die TMC5160-Validierung
+\end{itemize}
+
+\subsection{Verbesserungspotenzial}
+
+Rückblickend hätten folgende Aspekte die Arbeit verbessert:
+
+\nlparagraph{Projektmanagement}
+\begin{itemize}
+    \item Formale Spezifikation der Schnittstellen zu Projektbeginn
+    \item Strukturiertere Meilenstein-Definition
+    \item Kontinuierlichere Dokumentation
+\end{itemize}
+
+\nlparagraph{Technisch}
+\begin{itemize}
+    \item Unit-Tests für kritische Komponenten
+    \item Systematische Stress-Tests der Buffer-Pools
+    \item Bessere Sensorauswahl für das Hardware-Testing (z.B. Encoder statt optischer Maus)
+\end{itemize}
+
+\nlparagraph{Bei einer Wiederholung anders}
+\begin{itemize}
+    \item Frühere Definition formaler Schnittstellen-Spezifikationen
+    \item Systematischeres Logging von Anfang an
+    \item Mehr Zeit für Dokumentation während der Entwicklung
+    \item Frühere und häufigere Code-Reviews
+\end{itemize}
+
+\section{Ausblick}
+\label{sec:ausblick}
+
+\subsection{Zukünftige Entwicklungen bei ATN}
+
+Der entwickelte W5500-Driver bildet die Grundlage für zukünftige Erweiterungen:
+\begin{itemize}
+    \item Integration weiterer Netzwerkprotokolle
+    \item Remote-Monitoring und -Diagnostik
+    \item Industrie-4.0-Anbindung der Lötsysteme
+\end{itemize}
+
+Für die Validierung des TMC5160-Lötvorschubs sollten präzisere Messmethoden (z.B. Encoder-basierte Systeme) evaluiert werden.
+
+\subsection{Weiterführende Arbeiten}
+
+Aufbauend auf den Ergebnissen dieser Arbeit könnten folgende Themen untersucht werden:
+\begin{itemize}
+    \item Performance-Optimierung der asynchronen SPI-Kommunikation
+    \item Skalierbarkeit des Architekturansatzes auf komplexere Systeme
+    \item Alternative Messmethoden für die Motorvalidierung
+\end{itemize}
+
+\section{Fazit}
+\label{sec:fazit}
+
+Die Praxisphase bei der Automatisierungstechnik Niemeier GmbH war erfolgreich. Die definierten Projektziele für den TMC5160-Driver und die W5500-Ethernet-Integration wurden erreicht. Das Hardware-Testing-System lieferte zwar keine brauchbaren Messergebnisse für die TMC5160-Validierung, identifizierte aber frühzeitig die Limitierungen des gewählten Sensorprinzips.
+
+Die iterative Entwicklungsmethodik erwies sich als geeignet für komplexe Embedded-Projekte. Die enge Zusammenarbeit mit erfahrenen Entwicklern durch Code-Reviews war essentiell für die Qualität der Ergebnisse.
+
+Die Praxisstelle kann für Studierende empfohlen werden, die praktische Erfahrung in professioneller Firmware-Entwicklung sammeln möchten.

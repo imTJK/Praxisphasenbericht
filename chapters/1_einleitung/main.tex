@@ -1,0 +1,57 @@
+\chapter{Einleitung}
+\label{chap:einleitung}
+
+\section{Motivation und Problemstellung}
+\label{sec:motivation}
+
+% TODO: Persönliche Motivation konkretisieren - warum genau ATN? Wie auf die Stelle aufmerksam geworden?
+
+Die Entwicklung von Embedded Systems für industrielle Automatisierungsanwendungen stellt eine der zentralen Herausforderungen der modernen Fertigungstechnik dar. Die zunehmende Komplexität von Steuerungssystemen erfordert eine enge Verzahnung von Hardware-naher Programmierung, Echtzeitsystemen und Netzwerkkommunikation. Diese Arbeit dokumentiert die praktische Anwendung theoretischer Studieninhalte im Bereich der Firmware-Entwicklung während einer Praxisphase bei der Automatisierungstechnik Niemeier GmbH (ATN) in Berlin.
+
+% TODO: Weg zur Praxisstelle beschreiben (Bewerbungsprozess, erste Kontakte, etc.)
+
+Die Entscheidung für diese Praxisstelle basierte auf dem starken Interesse an Embedded Systems und Firmware-Entwicklung. Während des Studiums der Humanoiden Robotik wurden in mehreren Modulen Grundlagen der Mikrocontroller-Programmierung und hardwarenahen Entwicklung vermittelt. Die praktischen Übungen im Bereich der hardwarenahen Programmierung zeigten, dass die Verbindung zwischen Software und Hardware genau der Bereich ist, in dem eine Vertiefung angestrebt wurde.
+
+\section{Zielsetzung der Arbeit}
+\label{sec:zielsetzung}
+
+Das übergeordnete Ziel dieser Praxisphase war die Entwicklung produktionsreifer Firmware-Komponenten für industrielle Automatisierungssysteme. Im Einzelnen wurden folgende Teilziele definiert:
+
+\begin{enumerate}
+    \item \textbf{TMC5160 Stepper-Motor-Driver:} Entwicklung präziser Rampenprofil-Kalkulationen für einen Lötvorschub-Modul unter Berücksichtigung von Interrupt-Sicherheit und Echtzeitanforderungen.
+    
+    \item \textbf{Hardware-Testing:} Entwicklung eines kostengünstigen Prototyping-Systems zur Sensorkalibrierung mittels Raspberry Pi Pico als USB-Host.
+    
+    \item \textbf{W5500 Ethernet-Integration:} Vollständige Integration eines Ethernet-Controllers in die bestehende Firmware-Architektur mit Fokus auf asynchrone Kommunikation und statisches Speichermanagement.
+\end{enumerate}
+
+Die Arbeit verfolgt dabei einen wissenschaftlich-methodischen Ansatz, der die Verknüpfung zwischen theoretischem Studienwissen und praktischer Anwendung explizit dokumentiert.
+
+\section{Aufbau der Arbeit}
+\label{sec:aufbau}
+
+Die vorliegende Arbeit gliedert sich in sechs Kapitel, die einer wissenschaftlichen Struktur folgen:
+
+\textbf{Kapitel~\ref{chap:grundlagen}} legt die theoretischen Grundlagen der Embedded-Systems-Entwicklung dar. Es werden die relevanten Konzepte aus dem Studium -- insbesondere Echtzeitbetriebssysteme, Speicherverwaltung und Hardware-Kommunikation -- erläutert und in den Kontext der industriellen Automatisierungstechnik eingeordnet.
+
+\textbf{Kapitel~\ref{chap:methodik}} beschreibt die Arbeitsumgebung und die angewandten Methoden. Neben der Vorstellung des Praktikumsbetriebs werden die verwendeten Entwicklungswerkzeuge, Prozesse und die organisatorischen Rahmenbedingungen dargestellt.
+
+\textbf{Kapitel~\ref{chap:implementierung}} dokumentiert die technische Implementierung der drei Hauptprojekte. Der Schwerpunkt liegt auf der detaillierten Beschreibung der Lösungsansätze und deren technischer Umsetzung.
+
+\textbf{Kapitel~\ref{chap:ergebnisse}} präsentiert die erzielten Ergebnisse und evaluiert deren Qualität anhand definierter Kriterien. Die Projektergebnisse werden sowohl quantitativ als auch qualitativ bewertet.
+
+\textbf{Kapitel~\ref{chap:diskussion}} diskutiert die gewonnenen Erkenntnisse im Kontext des Studiums und der beruflichen Entwicklung. Es werden Verbesserungspotenziale identifiziert und ein Ausblick auf zukünftige Entwicklungen gegeben.
+
+\section{Abgrenzung}
+\label{sec:abgrenzung}
+
+Diese Arbeit fokussiert sich auf die Firmware-Entwicklung für Embedded Systems im Kontext der industriellen Automatisierungstechnik. Nicht behandelt werden:
+
+\begin{itemize}
+    \item Hardware-Design und Schaltungsentwicklung
+    \item Mechanische Konstruktion (außer unterstützende CAD-Arbeiten)
+    \item Vertriebliche oder kaufmännische Aspekte
+    \item Zertifizierungs- und Zulassungsverfahren
+\end{itemize}
+
+Der zeitliche Rahmen der Praxisphase erstreckte sich vom 07.07.2025 bis 30.11.2025, wobei krankheitsbedingte Unterbrechungen zwischen dem 15.09. und 01.11. zu verzeichnen waren.

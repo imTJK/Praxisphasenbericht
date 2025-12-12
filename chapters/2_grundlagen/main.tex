@@ -1,0 +1,155 @@
+\chapter{Theoretische Grundlagen}
+\label{chap:grundlagen}
+
+Dieses Kapitel legt die theoretischen Grundlagen dar, die für das Verständnis der durchgeführten Arbeiten erforderlich sind.
+
+\section{Embedded Systems und Firmware-Entwicklung}
+\label{sec:embedded_systems}
+
+Embedded Systems sind spezialisierte Computersysteme, die als Teil eines größeren Systems dedizierte Funktionen ausführen. Im Gegensatz zu General-Purpose-Computern sind sie für spezifische Aufgaben optimiert und unterliegen strengen Anforderungen bezüglich Ressourcenverbrauch, Echtzeitfähigkeit und Zuverlässigkeit.
+
+\subsection{Charakteristiken von Embedded Systems}
+
+Die grundlegenden Charakteristiken von Embedded Systems umfassen:
+
+\begin{itemize}
+    \item \textbf{Ressourcenbeschränkungen:} Limitierter Speicher, Rechenleistung und Energieverbrauch
+    \item \textbf{Echtzeitanforderungen:} Deterministische Reaktionszeiten auf externe Ereignisse
+    \item \textbf{Hardware-Nähe:} Direkte Interaktion mit Peripherie über Register und Interrupts
+    \item \textbf{Zuverlässigkeit:} Langzeitstabilität ohne menschliche Intervention
+\end{itemize}
+
+Diese Charakteristiken haben direkte Auswirkungen auf die Softwarearchitektur und die verwendeten Programmiertechniken.
+
+\subsection{C versus C++ in Embedded-Kontexten}
+
+Die Wahl der Programmiersprache in Embedded Systems ist eine wichtige Architekturentscheidung. Während C++ mit seinen objektorientierten Konzepten Vorteile in der Strukturierung bietet, führt es zu zusätzlichem Overhead:
+
+\begin{itemize}
+    \item Virtuelle Funktionstabellen erhöhen Speicherverbrauch
+    \item Runtime Type Information (RTTI) benötigt zusätzliche Ressourcen
+    \item Exceptions können zu nicht-deterministischem Verhalten führen
+\end{itemize}
+
+Native C bietet hingegen maximale Kontrolle über den generierten Maschinencode und minimalen Overhead. Die Entscheidung zwischen beiden Sprachen muss projektspezifisch getroffen werden.
+
+\section{Echtzeitbetriebssysteme (RTOS)}
+\label{sec:rtos}
+
+Ein Echtzeitbetriebssystem (Real-Time Operating System, RTOS) ist ein Betriebssystem, das deterministische Reaktionszeiten garantiert.
+
+\subsection{Scheduling und Task-Management}
+
+Das Scheduling in einem RTOS folgt in der Regel einem prioritätsbasierten präemptiven Ansatz. Jeder Task erhält eine Priorität, und der Scheduler wählt stets den bereiten Task mit der höchsten Priorität zur Ausführung.
+
+\nlparagraph{Task-Zustände}
+Ein Task kann sich in folgenden Zuständen befinden:
+\begin{itemize}
+    \item \textbf{Running:} Aktuell in Ausführung
+    \item \textbf{Ready:} Bereit zur Ausführung, wartet auf Scheduler
+    \item \textbf{Blocked:} Wartet auf ein Ereignis (z.B. Semaphor, Timer)
+    \item \textbf{Suspended:} Explizit angehalten
+\end{itemize}
+
+\subsection{Synchronisationsmechanismen}
+
+Die Koordination zwischen Tasks erfordert Synchronisationsmechanismen:
+
+\nlparagraph{Semaphoren}
+Semaphoren sind Zählvariablen, die den Zugriff auf begrenzte Ressourcen kontrollieren. Binäre Semaphoren (Werte 0 oder 1) dienen der Signalisierung zwischen Tasks.
+
+\nlparagraph{Mutexe}
+Mutexe (Mutual Exclusion) schützen kritische Abschnitte vor gleichzeitigem Zugriff. Im Gegensatz zu Semaphoren implementieren sie das Ownership-Konzept und können Priority Inheritance unterstützen.
+
+\nlparagraph{Message Queues}
+Message Queues ermöglichen asynchrone Kommunikation zwischen Tasks durch das Senden und Empfangen von Nachrichten. Sie entkoppeln Sender und Empfänger zeitlich.
+
+\subsection{Interrupt Service Routines (ISR)}
+\label{subsec:isr}
+
+Interrupts ermöglichen die sofortige Reaktion auf Hardware-Ereignisse. Die Interrupt Service Routine (ISR) ist dabei eine spezielle Funktion, die außerhalb des normalen Task-Kontexts ausgeführt wird.
+
+\nlparagraph{ISR-Kontext vs. Task-Kontext}
+Der ISR-Kontext unterscheidet sich fundamental vom Task-Kontext:
+\begin{itemize}
+    \item ISRs dürfen nicht blockieren
+    \item Viele RTOS-Funktionen sind im ISR-Kontext nicht verfügbar
+    \item ISRs sollten möglichst kurz sein
+    \item Die Kommunikation mit Tasks erfolgt über spezielle ISR-sichere Mechanismen
+\end{itemize}
+
+\section{Speicherverwaltung in Embedded Systems}
+\label{sec:speicherverwaltung}
+
+Die Speicherverwaltung in Embedded Systems unterscheidet sich grundlegend von der in Desktop-Systemen.
+
+\subsection{Statische vs. Dynamische Allokation}
+
+\nlparagraph{Dynamische Allokation}
+Dynamische Speicherallokation mittels \texttt{malloc()} und \texttt{free()} ist in Embedded Systems problematisch:
+\begin{itemize}
+    \item \textbf{Fragmentierung:} Wiederholte Allokation/Deallokation führt zu Speicherfragmentierung
+    \item \textbf{Nicht-deterministisch:} Die Ausführungszeit von \texttt{malloc()} ist nicht vorhersagbar
+    \item \textbf{Fehlerbehandlung:} Out-of-Memory-Situationen zur Laufzeit sind schwer handhabbar
+\end{itemize}
+
+\nlparagraph{Statische Allokation}
+In sicherheitskritischen und echtzeitfähigen Systemen wird daher oft statische Allokation bevorzugt:
+\begin{itemize}
+    \item Speicher wird zur Compile-Zeit reserviert
+    \item Deterministische Laufzeit
+    \item Keine Fragmentierung möglich
+    \item Ressourcenverbrauch ist zur Entwicklungszeit bekannt
+\end{itemize}
+
+\subsection{Buffer-Pool-Konzept}
+
+Das Buffer-Pool-Konzept verbindet die Vorteile beider Ansätze: Statisch allozierte Buffer werden zur Laufzeit aus einem Pool angefordert und nach Gebrauch zurückgegeben. Dies ermöglicht flexible Ressourcennutzung bei deterministischem Verhalten.
+
+\section{Hardware-Kommunikation}
+\label{sec:hardware_kommunikation}
+
+Die Kommunikation mit Hardware-Komponenten erfolgt über verschiedene Protokolle und Schnittstellen.
+
+\subsection{Serial Peripheral Interface (SPI)}
+
+SPI ist ein synchrones serielles Kommunikationsprotokoll für die Kommunikation zwischen Mikrocontrollern und Peripheriegeräten. Es verwendet vier Signalleitungen:
+
+\begin{itemize}
+    \item \textbf{SCLK:} Serial Clock (vom Master generiert)
+    \item \textbf{MOSI:} Master Out Slave In
+    \item \textbf{MISO:} Master In Slave Out
+    \item \textbf{CS:} Chip Select (aktiv low)
+\end{itemize}
+
+SPI ermöglicht hohe Datenraten und Vollduplex-Kommunikation, erfordert jedoch für jeden Slave eine separate Chip-Select-Leitung.
+
+\subsection{TCP/IP und Ethernet}
+
+Das TCP/IP-Protokollstack ermöglicht die Kommunikation über Ethernet-Netzwerke. Die relevanten Schichten für Embedded-Anwendungen sind:
+
+\begin{itemize}
+    \item \textbf{Physical/Data Link:} Ethernet (IEEE 802.3)
+    \item \textbf{Network:} Internet Protocol (IP)
+    \item \textbf{Transport:} Transmission Control Protocol (TCP) / User Datagram Protocol (UDP)
+    \item \textbf{Application:} Anwendungsspezifische Protokolle
+\end{itemize}
+
+Hardware-TCP/IP-Stacks wie der W5500 implementieren diese Schichten in Hardware und entlasten damit den Hauptprozessor.
+
+\section{Schrittmotorsteuerung}
+\label{sec:schrittmotorsteuerung}
+
+Schrittmotoren sind Synchronmotoren, die durch diskrete Spannungspulse angesteuert werden. Für präzise Bewegungen sind geeignete Rampenprofile erforderlich.
+
+\subsection{Rampenprofile}
+
+Ein Rampenprofil beschreibt den zeitlichen Verlauf der Geschwindigkeit während einer Bewegung. Typische Profile umfassen:
+
+\begin{itemize}
+    \item \textbf{Beschleunigungsphase:} Lineare Erhöhung der Geschwindigkeit
+    \item \textbf{Konstantfahrt:} Bewegung mit Maximalgeschwindigkeit
+    \item \textbf{Verzögerungsphase:} Lineare Reduktion der Geschwindigkeit
+\end{itemize}
+
+Die mathematische Modellierung dieser Phasen erfordert die Berechnung von Beschleunigung, Zeit und zurückgelegter Strecke unter Berücksichtigung physikalischer Constraints des Motors.

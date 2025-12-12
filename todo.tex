@@ -1,0 +1,151 @@
+%%
+%% TODO-Liste für den Praxisphasenbericht
+%% 
+%% Diese Datei listet alle offenen Punkte auf, die noch ergänzt werden könnten/sollten.
+%% Die TODOs sind auch als Kommentare in den jeweiligen .tex-Dateien markiert.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{enumitem}
+\usepackage[margin=2.5cm]{geometry}
+
+\title{TODO-Liste Praxisphasenbericht}
+\author{Tjorven Koopmann}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section*{Übersicht}
+
+Diese Liste enthält alle Stellen im Bericht, an denen noch Inhalte ergänzt werden könnten oder sollten. Die Punkte sind nach Kapitel sortiert.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kapitel 1: Einleitung}
+\texttt{chapters/1\_einleitung/main.tex}
+
+\begin{itemize}[leftmargin=*]
+    \item[\textbf{TODO 1.1}] \textbf{Persönliche Motivation konkretisieren}
+    \begin{itemize}
+        \item Warum genau ATN als Praxisstelle gewählt?
+        \item Wie auf die Stelle aufmerksam geworden?
+        \item Was waren die ausschlaggebenden Faktoren?
+    \end{itemize}
+    
+    \item[\textbf{TODO 1.2}] \textbf{Weg zur Praxisstelle beschreiben}
+    \begin{itemize}
+        \item Bewerbungsprozess
+        \item Erste Kontakte / Vorstellungsgespräch
+        \item Zeitlicher Ablauf der Bewerbung
+    \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kapitel 3: Methodik und Arbeitsumgebung}
+\texttt{chapters/3\_methodik/main.tex}
+
+\begin{itemize}[leftmargin=*]
+    \item[\textbf{TODO 3.1}] \textbf{Foto des Firmengebäudes oder Arbeitsplatzes}
+    \begin{itemize}
+        \item Außenansicht des Gebäudes?
+        \item Foto des Elektronik-Labors?
+        \item Arbeitsplatz mit Entwicklungsumgebung?
+    \end{itemize}
+    
+    \item[\textbf{TODO 3.2}] \textbf{Produktfotos einfügen}
+    \begin{itemize}
+        \item LightBeam-System
+        \item VARIO-Plattform
+        \item Lötsystem in Aktion?
+    \end{itemize}
+    
+    \item[\textbf{TODO 3.3}] \textbf{Organigramm oder Unternehmensstruktur}
+    \begin{itemize}
+        \item Vereinfachte Darstellung der Abteilungen
+        \item Position der Praxisphase im Unternehmen markieren
+    \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kapitel 4: Implementierung}
+\texttt{chapters/4\_implementierung/main.tex}
+
+\begin{itemize}[leftmargin=*]
+    \item[\textbf{TODO 4.1}] \textbf{TMC5160 Lötvorschub-Modul}
+    \begin{itemize}
+        \item Foto des Lötvorschub-Moduls
+        \item Schaltbild oder Blockdiagramm der Hardware
+    \end{itemize}
+    
+    \item[\textbf{TODO 4.2}] \textbf{Hardware-Testing Prototyp}
+    \begin{itemize}
+        \item Foto des Prototyps mit Maussensor und Raspberry Pi Pico
+        \item Foto der 3D-gedruckten Halterung
+        \item CAD-Screenshot der Halterung aus SolidWorks
+    \end{itemize}
+    
+    \item[\textbf{TODO 4.3}] \textbf{W5500 Addon-Board}
+    \begin{itemize}
+        \item Foto des W5500 Addon-Boards
+        \item Foto der Integration in das Gesamtsystem
+    \end{itemize}
+    
+    \item[\textbf{TODO 4.4}] \textbf{Architekturdiagramm W5500-Integration}
+    \begin{itemize}
+        \item Blockdiagramm der Softwarearchitektur
+        \item SPI-Task-Struktur
+        \item Buffer-Pool-Verwaltung
+        \item Zusammenspiel der Komponenten
+    \end{itemize}
+    
+    \item[\textbf{TODO 4.5}] \textbf{Buffer-Pool-Konzept Diagramm}
+    \begin{itemize}
+        \item Visualisierung des Allokation/Freigabe-Flusses
+        \item Zustandsdiagramm der Buffer
+    \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Kapitel 5: Ergebnisse und Evaluation}
+\texttt{chapters/5\_ergebnisse/main.tex}
+
+\begin{itemize}[leftmargin=*]
+    \item[\textbf{TODO 5.1}] \textbf{Weitere quantitative Metriken für W5500}
+    \begin{itemize}
+        \item Lines of Code (falls messbar/relevant)
+        \item Durchsatz (Bytes/Sekunde)?
+        \item Latenz der Kommunikation?
+        \item Speicherverbrauch (RAM/Flash)?
+    \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Prioritäten}
+
+\subsection*{Hoch (sollte ergänzt werden)}
+\begin{enumerate}
+    \item TODO 1.1 -- Persönliche Motivation (macht den Bericht persönlicher)
+    \item TODO 1.2 -- Weg zur Praxisstelle (gehört zur Einleitung)
+    \item TODO 4.4 -- Architekturdiagramm W5500 (verbessert Verständlichkeit erheblich)
+\end{enumerate}
+
+\subsection*{Mittel (wäre gut)}
+\begin{enumerate}
+    \item TODO 4.2 -- Fotos Hardware-Testing Prototyp
+    \item TODO 4.3 -- Foto W5500 Addon-Board
+    \item TODO 3.2 -- Produktfotos ATN
+\end{enumerate}
+
+\subsection*{Optional (nice-to-have)}
+\begin{enumerate}
+    \item TODO 3.1 -- Foto Firmengebäude/Arbeitsplatz
+    \item TODO 3.3 -- Organigramm
+    \item TODO 4.1 -- Foto Lötvorschub-Modul
+    \item TODO 4.5 -- Buffer-Pool Diagramm
+    \item TODO 5.1 -- Weitere Metriken
+\end{enumerate}
+
+\end{document}
